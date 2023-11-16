@@ -2,8 +2,17 @@ let playerChoice
 let computerPlay
 let result
 let playerPlay
+let scorePlayer
+let scoreComputer
+let counter
 
-
+function bo5 (jankenMatch) 
+{
+while (scorePlayer < 3 || scoreComputer < 3)
+jankenMatch
+console.log(score)
+if (score = )
+}
 
 function jankenMatch (computerPlay, playerChoice) {
     playerPlay = playerChoice.toLowerCase()
@@ -18,6 +27,7 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You won!")
     alert("You won!")
+    score = score++
     }
 
 
@@ -25,11 +35,13 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You lose!")
     alert("You lose!")
+    score = score--
     }
     else if (playerPlay == "rock" && computerPlay == 'paper')
     {
     console.log("You lose!")
     alert("You lose!")
+    score = score--
     }
 
     
@@ -37,6 +49,7 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You won!")
     alert("You won!")
+    score = score++
     }
 
     
@@ -44,6 +57,7 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You won!")
     alert("You won!")
+    score = score++
     }
 
 
@@ -51,6 +65,7 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You lose!")
     alert("You lose!")
+    score = score--
     }
     
     else {
