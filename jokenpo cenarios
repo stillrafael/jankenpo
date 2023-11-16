@@ -1,0 +1,10 @@
+jokenpo cenarios
+
+papel x tesoura = tesoura x papel
+papel x pedra = pedra x papel
+tesoura x pedra = pedra x tesoura
+papel x papel
+tesoura x tesoura
+pedra x pedra
+
+
