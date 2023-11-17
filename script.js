@@ -2,24 +2,34 @@ let playerChoice
 let computerPlay
 let result
 let playerPlay
-let scorePlayer
-let scoreComputer
-let counter
+let scorePlayer = 0
+let scoreComputer = 0
 
-function bo5 (jankenMatch) 
+function bo5 (jankenMatch, scoreComputer, scorePlayer) 
 {
-while (scorePlayer < 3 || scoreComputer < 3)
-jankenMatch
-console.log(score)
-if (score = )
+while (scorePlayer <= 3 || scoreComputer <= 3)
+jankenMatch(getComputerChoice(), playerChoice)
+console.log(scorePlayer, scoreComputer)
+if (scorePlayer >= 3) {
+    alert('You won the match!')
+    return
+}
+else  if (scoreComputer >= 3) {
+    alert('You lost the match! 3x',scorePlayer,' for you')
+    return
+}
+else {
+    
+}
 }
 
 function jankenMatch (computerPlay, playerChoice) {
-    playerPlay = playerChoice.toLowerCase()
+    let playerPlay = prompt('Type: rock, paper or scissors.').toLowerCase()
     if (playerPlay == computerPlay) 
     {
     console.log("It's a draw")
     alert("It's a draw")
+    return
     }
 
 
@@ -27,29 +37,37 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You won!")
     alert("You won!")
-    score = score++
+    scorePlayer = scorePlayer + 1
+    console.log(scorePlayer)
+    return scorePlayer
     }
 
 
-    else if (playerPlay == "paper" && computerPlay == 'scissor')
+    else if (playerPlay == "paper" && computerPlay == 'scissors')
     {
     console.log("You lose!")
     alert("You lose!")
-    score = score--
+    scoreComputer = scoreComputer + 1
+    console.log(scoreComputer)
+    return scoreComputer
     }
     else if (playerPlay == "rock" && computerPlay == 'paper')
     {
     console.log("You lose!")
     alert("You lose!")
-    score = score--
+    scoreComputer = scoreComputer + 1
+    console.log(scoreComputer)
+    return scoreComputer
     }
 
     
-    else if (playerPlay == "rock" && computerPlay == 'scissor')
+    else if (playerPlay == "rock" && computerPlay == 'scissors')
     {
     console.log("You won!")
     alert("You won!")
-    score = score++
+    scorePlayer = scorePlayer + 1
+    console.log(scorePlayer)
+    return scorePlayer
     }
 
     
@@ -57,7 +75,9 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You won!")
     alert("You won!")
-    score = score++
+    scorePlayer = scorePlayer + 1
+    console.log(scorePlayer)
+    return scorePlayer
     }
 
 
@@ -65,7 +85,9 @@ function jankenMatch (computerPlay, playerChoice) {
     {
     console.log("You lose!")
     alert("You lose!")
-    score = score--
+    scoreComputer = scoreComputer + 1
+    console.log(scoreComputer)
+    return scoreComputer
     }
     
     else {
@@ -93,7 +115,9 @@ function getComputerChoice () {
 
 
 function gameStart () {
-    playerChoice = prompt('Welcome to the old rock, paper and scisor game type in your choice between either rock, paper or scissor to see if you beat the computer Type rock, paper or scissor: ')
+    alert('Welcome to the old rock, paper and scisor game type in your choice between either rock, paper or scissor to see if you beat the computer on a best of 5')
+    //playerChoice = prompt('Welcome to the old rock, paper and scisor game type in your choice between either rock, paper or scissor to see if you beat the computer Type rock, paper or scissor: ')
+    //bo5 (jankenMatch, scoreComputer, scorePlayer)
     jankenMatch(getComputerChoice(), playerChoice)
 }
 
