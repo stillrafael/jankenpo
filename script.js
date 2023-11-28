@@ -1,127 +1,100 @@
-let playerChoice
+let pageStart = document.querySelector('#base')
+pageStart.addEventListener('click', gameStart)
+let playerScore = 0
+let computerScore = 0
 let computerPlay
-let result
-let playerPlay
-let scorePlayer = 0
-let scoreComputer = 0
-
-function bo5 (jankenMatch) 
-{
-while (scorePlayer <= 3 || scoreComputer <= 3){
-jankenMatch(getComputerChoice(), playerPlay, scoreComputer, scorePlayer)
-console.log(scorePlayer, scoreComputer)
-if (scorePlayer >= 3) {
-    alert('You won the match!')
-    scorePlayer = 0
-    scoreComputer = 0
-    return
-}
-else  if (scoreComputer >= 3) {
-    alert('You lost the match! 3x' + scorePlayer + ' for you')
-    scorePlayer = 0
-    scoreComputer = 0
-    return
-}
-else {
-    
-}
-}
-}
-function jankenMatch (computerPlay) {
-    let playerPlay = prompt('Type: rock, paper or scissors.').toLowerCase()
-    if (playerPlay == computerPlay) 
-    {
-    console.log("It's a draw")
-    alert("It's a draw")
-    return scoreComputer, scorePlayer
-    }
-
-
-    else if (playerPlay == "paper" && computerPlay == 'rock')
-    {
-    console.log("You won!")
-    alert("You won!")
-    scorePlayer = scorePlayer + 1
-    console.log(scorePlayer)
-    return scorePlayer, scoreComputer
-    }
-
-
-    else if (playerPlay == "paper" && computerPlay == 'scissors')
-    {
-    console.log("You lose!")
-    alert("You lose!")
-    scoreComputer = scoreComputer + 1
-    console.log(scoreComputer)
-    return scoreComputer, scorePlayer
-    }
-    else if (playerPlay == "rock" && computerPlay == 'paper')
-    {
-    console.log("You lose!")
-    alert("You lose!")
-    scoreComputer = scoreComputer + 1
-    console.log(scoreComputer)
-    return scoreComputer, scorePlayer
-    }
-
-    
-    else if (playerPlay == "rock" && computerPlay == 'scissors')
-    {
-    console.log("You won!")
-    alert("You won!")
-    scorePlayer = scorePlayer + 1
-    console.log(scorePlayer)
-    return scorePlayer, scoreComputer
-    }
-
-    
-    else if (playerPlay == "scissors" && computerPlay == 'paper')
-    {
-    console.log("You won!")
-    alert("You won!")
-    scorePlayer = scorePlayer + 1
-    console.log(scorePlayer)
-    return scorePlayer, scorePlayer
-    }
-
-
-    else if (playerPlay == "scissors" && computerPlay == 'rock')
-    {
-    console.log("You lose!")
-    alert("You lose!")
-    scoreComputer = scoreComputer + 1
-    console.log(scoreComputer)
-    return scoreComputer, scorePlayer
-    }
-    
-    else {
-        alert("It only works typing either rock, paper or scissors!")
-    }
-    
-}
-
 function getComputerChoice () {
     computerPlay = Math.floor(Math.random() * 3 + 1);
     if (computerPlay == 1){
-    computerPlay = 'paper'
     console.log(computerPlay)
+    return computerPlay = 'paper'
     }
-    if (computerPlay == 2){
-    computerPlay = 'rock'
+    else if (computerPlay == 2){
     console.log(computerPlay)
+    return computerPlay = 'rock'
     }
-    if (computerPlay == 3) {
-    computerPlay = 'scissors'
+    else if (computerPlay == 3) {
     console.log(computerPlay)
+    return computerPlay = 'scissors'
     }
-    return computerPlay;
 }
+
 
 
 function gameStart () {
-    alert('Welcome to the old rock, paper and scisor game type in your choice between either rock, paper or scissor to see if you beat the computer on a best of 5')
-    bo5 (jankenMatch, scoreComputer, scorePlayer)
-    //jankenMatch(getComputerChoice(), playerChoice)
+    const rockButton = document.createElement('button')
+    const paperButton = document.createElement('button')
+    const scissorsButton = document.createElement('button')
+    const score = document.createElement('div')
+    const title = document.querySelector('#base')
+    title.textContent = 'Welcome to the old rock, paper and scissors game, also known as JAN-KEN-PO. Press a button to play a round against the computer, with scores being kept live wins first to 5'
+    title.appendChild(rockButton)
+    title.appendChild(paperButton)
+    title.appendChild(scissorsButton)
+    title.append(score)
+    rockButton.textContent = 'Rock'
+    paperButton.textContent = 'Paper'
+    scissorsButton.textContent = 'Scissors'
+    rockButton.addEventListener('click', playRock)
+    paperButton.addEventListener('click', playPaper)
+    scissorsButton.addEventListener('click', playScissors)
+    score.textContent = 'Player' + playerScore + ' X ' + computerScore + 'Computer'
+    if (playerScore >= 5) {
+        alert('You won the game!')
+    }
+    else if (computerScore >= 5) {
+        alert('You lost the game!')
+    }
 }
 
-document.getElementById("startGame").addEventListener("click", gameStart)
+
+
+
+function playRock() {
+    getComputerChoice()
+    if (computerPlay == 'scissors') {
+        playerScore+= 1
+        console.log('Won round!')
+    }
+    else if (computerPlay == 'paper') {
+        computerScore+=1
+        console.log('Lost round!')
+    }
+    else {
+        console.log('Draw.')
+    }
+    }
+
+function playPaper() {
+    getComputerChoice()
+    if (computerPlay == 'rock') {
+        playerScore+= 1
+        console.log('Won round!')
+    }
+    else if (computerPlay == 'scissors') {
+        computerScore+=1
+        console.log('Lost round!')
+    }
+    else {
+        console.log('Draw.')
+    }
+}
+
+function playScissors() {
+    getComputerChoice()
+    if (computerPlay == 'paper') {
+        playerScore+= 1
+        console.log('Won round!')
+    }
+    else if (computerPlay == 'rock') {
+        computerScore+=1
+        console.log('Lost round!')
+    }
+    else {
+        console.log('Draw.')
+    }
+}
+
+
+
+
